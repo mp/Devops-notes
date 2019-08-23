@@ -1,0 +1,44 @@
+Terraform is an open-source infrastructure as code software tool.
+It enables users to define and provision a datacenter infrastructure using a high-level configuration language known as Hashicorp Configuration Language (HCL), or optionally JSON.
+
+Terraform supports a number of cloud infrastructure providers such as Amazon Web Services, Google Cloud Platform, Microsoft Azure, Oracle Cloud Infrastructure, VMware vSphere, OpenStack.
+
+Provides a consistent interface to multiple platforms.
+
+https://learn.hashicorp.com/terraform/getting-started/build
+Runs through creating terraform instance on AWS free-tier in 2 pages
+
+Configuration file (config.tf):
+
+provider "aws" {
+  access_key = "ACCESS_KEY_HERE"
+  secret_key = "SECRET_KEY_HERE"
+  region     = "us-east-1"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
+
+If you leave out AWS credentials, Terraform will automatically search for saved API credentials (for example, in ~/.aws/credentials) or IAM instance profile credentials. 
+
+Commands:
+terraform init		# initialises terraform directory, one off
+terraform apply		# like git, shows changes execution plan
+terraform show		# show current state
+
+$ terraform show
+aws_instance.example:
+  id = i-32cf65a8
+  ami = ami-2757f631
+  availability_zone = us-east-1a
+  instance_state = running
+  instance_type = t2.micro
+  private_ip = 172.31.30.244
+  public_dns = ec2-52-90-212-55.compute-1.amazonaws.com
+  public_ip = 52.90.212.55
+  subnet_id = subnet-1497024d
+  vpc_security_group_ids.# = 1
+  vpc_security_group_ids.3348721628 = sg-67652003
+

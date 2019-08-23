@@ -1,0 +1,15 @@
+Enterprise encryption discussion:
+
+HSM / KSM in Cloudera AWS context (https://aws.amazon.com/cloudhsm/)
+
+AWS CloudHSM (hardware security module)
+
+Allows generating encryption keys on AWS cloud to encrypt traffic.
+Protects all the encryption keys, certificates and webserver private key in a dedicated host that offloads SSL/TLS processing from webservers. 
+
+In Public Key Infrastructure a certificate authority is a trusted source for digital certificates (which identify a person or organisation). AWS stores private keys and signs certificate requests so you can act as a certificate provider for the organisation. More secure and FIPS compliant than a KMS because it is a dedicated private service (FIPS-140 compliance, higher than ISO 27001).
+
+Amazon KSM is a shared hosted service (ISO 27001), but also used for storing cryptography keys.
+
+We have an HSM and a KSM. The HSM would be hammered if it was used exclusively, so we also have a KSM for caching keys locally that is used in conjunction with the HSM. The KSM can handle about 150,000 IOPS per second. It is used for encrypting/decrypting data in transmissionw with keys.
+

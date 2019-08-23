@@ -1,0 +1,15 @@
+An application container bundle
+Starting a single application is quicker than booting an OS, and requires less resources
+Creation of pods, dynamic storage provisioning
+Multiple availability zones - decentralised architecture (backup zones)
+Put it in the zone or region
+
+Kubernetes
+
+Kubernetes (commonly referred to as "K8s") is a system for automating deployment and management of containerized applications. Handles scaling.
+The basic scheduling unit in Kubernetes is called a "pod". It adds a higher level of abstraction to containerized components. A pod consists of one or more containers that are guaranteed to be co-located on the host machine and can share resources.[16] Each pod in Kubernetes is assigned a unique (within the cluster) IP address, which allows applications to use ports without the risk of conflict.[17] A pod can define a volume, such as a local disk directory or a network disk, and expose it to the containers in the pod.[18] Pods can be manually managed through the Kubernetes API, or their management can be delegated to a controller.
+
+Allows scaling: pokemon Go, Walmart
+
+1 kubernetes 5000 node clusters (VM), 30 pods per node
+Dynamic pod provisioning.
